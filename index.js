@@ -19,7 +19,7 @@ client.once('connect', async () => {
 	const uptime = os.uptime();
 	const days = Math.floor(uptime / (60 * 60 * 24));
 	const hours = Math.floor(uptime / (60 * 60)) % 24;
-	const minutes = Math.floor(uptime / 60) % (60 * 24);
+	const minutes = Math.floor(uptime / 60) % 60;
 	const text = `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`;
 
 	try {
