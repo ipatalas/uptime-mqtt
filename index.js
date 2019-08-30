@@ -14,9 +14,17 @@ const client = MQTT.connect(MQTT_URL);
 client.once('connect', async () => {
 	log.info('Connected to ' + MQTT_URL);
 	const uptime = os.uptime();
+	const days = Math.floor(uptime / (60 * 60 * 24));
+	const hours = Math.floor(uptime / (60 * 60)) % 24;
+	const minutes = Math.floor(uptime / 60) % (60 * 24);
+	const zeroPad = value => (value < 10) ? '0' + value : value.toString();
 
 	try {
-		await client.publish('home/uptime/seconds', uptime.toString());
+		await client.publish('home/uptime/total_seconds', uptime.toString());
+		await client.publish('home/uptime/days', days.toString());
+		await client.publish('home/uptime/hours', hours.toString());
+		await client.publish('home/uptime/minutes', minutes.toString());
+		await client.publish('home/uptime/text', `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`);
 		await client.end();
 
 		log.info('Finished');
