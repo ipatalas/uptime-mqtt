@@ -14,13 +14,13 @@ const client = MQTT.connect(MQTT_URL);
 client.once('connect', async () => {
 	log.info('Connected to ' + MQTT_URL);
 
+	const zeroPad = value => (value < 10) ? '0' + value : value.toString();
+
 	const uptime = os.uptime();
 	const days = Math.floor(uptime / (60 * 60 * 24));
 	const hours = Math.floor(uptime / (60 * 60)) % 24;
 	const minutes = Math.floor(uptime / 60) % (60 * 24);
 	const text = `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`;
-
-	const zeroPad = value => (value < 10) ? '0' + value : value.toString();
 
 	try {
 		await Promise.all([
