@@ -20,11 +20,14 @@ client.once('connect', async () => {
 	const zeroPad = value => (value < 10) ? '0' + value : value.toString();
 
 	try {
-		await client.publish('home/uptime/total_seconds', uptime.toString());
-		await client.publish('home/uptime/days', days.toString());
-		await client.publish('home/uptime/hours', hours.toString());
-		await client.publish('home/uptime/minutes', minutes.toString());
-		await client.publish('home/uptime/text', `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`);
+		await Promise.all([
+			client.publish('home/uptime/total_seconds', uptime.toString()),
+			client.publish('home/uptime/days', days.toString()),
+			client.publish('home/uptime/hours', hours.toString()),
+			client.publish('home/uptime/minutes', minutes.toString()),
+			client.publish('home/uptime/text', `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`)
+		]);
+
 		await client.end();
 
 		log.info('Finished');
