@@ -23,12 +23,14 @@ client.once('connect', async () => {
 	const text = `${days} days, ${zeroPad(hours)}:${zeroPad(minutes)}`;
 
 	try {
+		const options = { retain: true };
+
 		await Promise.all([
-			client.publish('home/uptime/total_seconds', uptime.toString()),
-			client.publish('home/uptime/days', days.toString()),
-			client.publish('home/uptime/hours', hours.toString()),
-			client.publish('home/uptime/minutes', minutes.toString()),
-			client.publish('home/uptime/text', text)
+			client.publish('home/uptime/total_seconds', uptime.toString(), options),
+			client.publish('home/uptime/days', days.toString(), options),
+			client.publish('home/uptime/hours', hours.toString(), options),
+			client.publish('home/uptime/minutes', minutes.toString(), options),
+			client.publish('home/uptime/text', text, options)
 		]);
 
 		await client.end();
