@@ -1,6 +1,6 @@
 const os = require('os');
 const MQTT = require('async-mqtt');
-const log = require('fancy-log');
+const log = require('elastic-logger')('uptime-mqtt');
 
 const MQTT_URL = process.env.MQTT_URL;
 
@@ -37,7 +37,7 @@ client.once('connect', async () => {
 
 		log.info('Finished');
 	} catch (error) {
-		log.error(error.message);
-		process.exit();
+		log.error(error);
+		process.exit(1);
 	}
 });

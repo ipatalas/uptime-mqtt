@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "async-mqtt": "^2.4.2",
-    "fancy-log": "^1.3.3"
+    "elastic-logger": "github:ipatalas/elastic-logger"
   }
 }
