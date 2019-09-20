@@ -35,7 +35,7 @@ client.once('connect', async () => {
 
 		await client.end();
 
-		log.info('Finished');
+		log.info({ uptime: text }, 'Finished');
 	} catch (error) {
 		log.error(error);
 		process.exit(1);
