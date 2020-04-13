@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async-mqtt": "^2.4.2",
-    "elastic-logger": "github:ipatalas/elastic-logger"
+    "elastic-logger": "github:ipatalas/elastic-logger#v1.1"
   }
 }
