@@ -9,7 +9,7 @@ if (!MQTT_URL) {
     process.exit(1);
 }
 
-const client = MQTT.connect(MQTT_URL);
+const client = MQTT.connect(MQTT_URL, { clientId: 'uptime' });
 
 client.once('connect', async () => {
     log.info('Connected to ' + MQTT_URL);
