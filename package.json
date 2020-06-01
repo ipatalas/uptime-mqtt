@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "async-mqtt": "^2.5.0",
-    "elastic-logger": "github:ipatalas/elastic-logger#v1.1"
+    "home-logger": "github:ipatalas/home-logger#v1.1.0"
   }
 }

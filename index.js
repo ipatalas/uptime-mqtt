@@ -1,6 +1,6 @@
 const os = require('os');
 const MQTT = require('async-mqtt');
-const log = require('elastic-logger')('uptime-mqtt');
+const log = require('home-logger')('uptime-mqtt');
 
 const MQTT_URL = process.env.MQTT_URL;
 
