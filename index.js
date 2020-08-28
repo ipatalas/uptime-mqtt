@@ -12,8 +12,6 @@ if (!MQTT_URL) {
 const client = MQTT.connect(MQTT_URL, { clientId: 'uptime' });
 
 client.once('connect', async () => {
-    log.info('Connected to ' + MQTT_URL);
-
     const zeroPad = value => (value < 10) ? '0' + value : value.toString();
 
     const uptime = os.uptime();
@@ -35,7 +33,9 @@ client.once('connect', async () => {
 
         await client.end();
 
-        log.info({ uptime: text }, 'Finished');
+        if (minutes % 10 === 0) {
+            log.info({ uptime: text }, 'Uptime - ' + text);
+        }
     } catch (error) {
         log.error(error);
         process.exit(1);
