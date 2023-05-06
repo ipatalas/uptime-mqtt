@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async-mqtt": "^2.5.0",
+    "async-mqtt": "^2.6.3",
     "home-logger": "github:ipatalas/home-logger#v1.1.0"
   }
 }
